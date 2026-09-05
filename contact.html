@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Alice Auger</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/services.css">
+</head>
+
+<body>
+    <div class="progress-bar"></div>
+
+    <header>
+        <div class="logo">
+            <div class="reveal-mask">
+                <a href="index.html">
+                    <div class="reveal-logo">ALICE AUGER</div>
+                </a>
+            </div>
+        </div>
+
+        <input type="checkbox" id="burger-check">
+        <label for="burger-check" class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </label>
+
+        <nav>
+            <a href="apropos.html">À PROPOS</a>
+            <a href="services.html">SERVICES</a>
+            <a href="contact.html">CONTACT</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="hero">
+            <h1 class="hero-title">
+                <span class="reveal-mask">
+                    <span class="reveal-text">
+                        Parlons<br>
+                        de votre<br>
+                        <span>projet</span>
+                    </span>
+                </span>
+            </h1>
+
+            <div class="hero-details">
+                <div></div>
+                <div class="hero-col-right">
+                    <div class="divider-line2"></div>
+                    <div class="reveal-mask">
+                        <p class="reveal-text">
+                            Commande sur mesure, animation événementielle
+                            ou projet graphique — décrivez votre intention,
+                            je vous réponds dans les 48h.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="next-label">
+                <span class="txt-label">CONTACT</span>
+                <div class="divider-line"></div>
+            </div>
+        </section>
+
+        <section class="contact-section">
+
+            <div class="contact-grid">
+
+                <!-- COLONNE GAUCHE : infos -->
+                <div class="contact-info">
+
+                    <div class="contact-block">
+                        <p class="contact-eyebrow">01 / Email</p>
+                        <a href="mailto:mail@hotmail.com" class="contact-link">mail@hotmail.com</a>
+                    </div>
+
+                    <div class="contact-block">
+                        <p class="contact-eyebrow">02 / Téléphone</p>
+                        <a href="tel:+33654882544" class="contact-link">+33 6 54 88 25 44</a>
+                    </div>
+
+                    <div class="contact-block">
+                        <p class="contact-eyebrow">03 / Localisation</p>
+                        <p class="contact-text">Paris, France<br>Disponible en déplacement</p>
+                    </div>
+
+                    <div class="contact-block">
+                        <p class="contact-eyebrow">04 / Réseaux</p>
+                        <div class="contact-socials">
+                            <a href="#" class="contact-social-link">→ Instagram</a>
+                            <a href="#" class="contact-social-link">→ LinkedIn</a>
+                            <a href="#" class="contact-social-link">→ Behance</a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- COLONNE DROITE : formulaire -->
+                <div class="contact-form-wrap">
+                    <h2 class="contact-form-title">Demande de devis<br><span>ou prise de contact</span></h2>
+
+                    <form class="contact-form" action="#" method="POST">
+
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label for="nom">Nom *</label>
+                                <input type="text" id="nom" name="nom" placeholder="Votre nom" required>
+                            </div>
+                            <div class="form-field">
+                                <label for="email">Email *</label>
+                                <input type="email" id="email" name="email" placeholder="votre@email.com" required>
+                            </div>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="sujet">Type de projet</label>
+                            <select id="sujet" name="sujet">
+                                <option value="" disabled selected>Choisir une option</option>
+                                <option value="commande">Gravure sur mesure — commande</option>
+                                <option value="animation">Animation événementielle / boutique</option>
+                                <option value="creation">Création graphique & identité visuelle</option>
+                                <option value="autre">Autre</option>
+                            </select>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="message">Votre projet *</label>
+                            <textarea id="message" name="message" rows="6"
+                                placeholder="Décrivez votre projet, le contexte, vos besoins..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="form-submit">
+                            <span>Envoyer le message</span>
+                            <span class="submit-arrow">→</span>
+                        </button>
+
+                    </form>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="footer-wrap">
+            <div class="f-col">
+                <div class="f-logo">ALICE AUGER</div>
+                <p class="f-sub">Paris, France<br>Design & Artisanat</p>
+            </div>
+
+            <div class="f-col">
+                <h2 class="f-title">CONTACT</h2>
+                <a href="#">→ Instagram</a>
+                <a href="#">→ LinkedIn</a>
+                <a href="#">→ Behance</a>
+            </div>
+
+            <div class="f-col1">
+                <p>mail@hotmail.com</p>
+                <p>+33 6 54 88 25 44</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>

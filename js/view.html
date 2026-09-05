@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratoire Typographique — Projets</title>
+    <style>
+        /* ==========================================================================
+           VARIABLES DE TON SITE
+           ========================================================================== */
+        :root {
+            --white: #ffffff;
+            --text-color: #f5e6c4; /* Ton doré/crème */
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --pad-sm: 24px;
+            --pad-md: 48px;
+            --pad-lg: 80px;
+        }
+
+        body {
+            background-color: #000000;
+            color: var(--white);
+            margin: 0;
+            padding: var(--pad-sm);
+            font-family: var(--font-sans);
+        }
+
+        .container-demo {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+
+        h1 {
+            font-size: 1.1rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            color: #444;
+            margin-bottom: 60px;
+            border-bottom: 1px solid #111;
+            padding-bottom: 15px;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .demo-section {
+            margin-bottom: 140px;
+        }
+
+        .demo-title {
+            font-size: 10px;
+            letter-spacing: 1px;
+            color: #444;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        /* ==========================================================================
+           STRUCTURE DE BASE COMMUNE (Centrée et épurée)
+           ========================================================================== */
+        .next-project-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            width: 100%;
+            height: 200px;
+            cursor: pointer;
+            overflow: hidden;
+            text-decoration: none;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            background: #000000;
+            transition: border-color 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .next-content-wrapper {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            pointer-events: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* L'étiquette supérieure reste constante en contenu */
+        .meta-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0px; /* S'écarte au hover pour insérer la flèche */
+            height: 14px;
+            margin-bottom: 14px;
+            transition: gap 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .meta-next {
+            font-family: var(--font-sans);
+            font-size: 9px;
+            letter-spacing: 5px;
+            color: #666;
+            text-transform: uppercase;
+            line-height: 14px;
+            transition: color 0.6s ease;
+        }
+
+        /* La flèche droite intégrée à côté du texte initial */
+        .indicator-arrow-right {
+            width: 14px;
+            height: 14px;
+            stroke: #666;
+            fill: none;
+            stroke-width: 1.2;
+            transform: translateX(-6px);
+            opacity: 0;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.5s ease, stroke 0.6s ease;
+        }
+
+        /* Image en arrière-plan (Pris en compte : 55% d'opacité en hover) */
+        .next-image-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.97);
+            z-index: 1;
+            overflow: hidden;
+            opacity: 0;
+            height: 120px;
+            width: 340px;
+            transition: opacity 1s cubic-bezier(0.25, 1, 0.5, 1), 
+                        transform 1s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .next-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(45%) grayscale(10%); /* Équilibré pour la visibilité de la photo */
+        }
+
+        /* Hover général sur l'image et l'étiquette supérieure */
+        .next-project-link:hover .next-image-container {
+            opacity: 0.55; /* Image bien présente */
+            transform: translate(-50%, -50%) scale(1.02);
+        }
+
+        .next-project-link:hover .meta-container {
+            gap: 8px; /* Fait de la place pour la flèche */
+        }
+
+        .next-project-link:hover .indicator-arrow-right {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+
+        /* ==========================================================================
+           STYLE TEXTE 1 : "THE CHROME FUSION" (Effet Mix-Blend-Mode)
+           Effet : Le texte utilise 'mix-blend-mode: difference'. Quand l'image
+                   passe derrière, le texte interagit de manière thermique/argentique
+                   avec les blancs et les noirs de la photo. Très artistique.
+           ========================================================================== */
+        .style-fusion .next-content-wrapper {
+            mix-blend-mode: difference; /* Magie CSS : inverse les couleurs selon le fond */
+        }
+
+        .style-fusion .next-title {
+            font-family: var(--font-sans);
+            font-size: clamp(1.4rem, 3vw, 2.2rem);
+            font-weight: 300;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.85); /* Blanc pur qui réagira au blend-mode */
+            margin: 0;
+            letter-spacing: 2px;
+            transition: letter-spacing 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        @media (min-width: 1024px) {
+            .style-fusion:hover .meta-next { color: var(--white); }
+            .style-fusion:hover .indicator-arrow-right { stroke: var(--white); }
+            .style-fusion:hover .next-title {
+                letter-spacing: 4px;
+                color: var(--white);
+            }
+        }
+
+
+        /* ==========================================================================
+           STYLE TEXTE 2 : "THE INK SILHOUETTE" (Masque transparent / Clip-text)
+           Effet : Au survol, le titre devient transparent et laisse voir l'image 
+                   uniquement À TRAVERS les lettres, comme une découpe de pochoir.
+           ========================================================================== */
+        .style-silhouette .next-title {
+            font-family: var(--font-sans);
+            font-size: clamp(1.4rem, 3vw, 2.2rem);
+            font-weight: 400; /* Légèrement plus épais pour apprécier la découpe */
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.85);
+            margin: 0;
+            letter-spacing: 2px;
+            transition: background 0.6s ease, color 0.6s ease, letter-spacing 0.8s ease;
+        }
+
+        @media (min-width: 1024px) {
+            .style-silhouette:hover .meta-next { color: var(--text-color); }
+            .style-silhouette:hover .indicator-arrow-right { stroke: var(--text-color); }
+            
+            .style-silhouette:hover .next-title {
+                letter-spacing: 3px;
+                /* Technique du texte transparent masquant */
+                background: url('https://picsum.photos/800/600') center center;
+                background-size: cover;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+        }
+
+
+        /* ==========================================================================
+           STYLE TEXTE 3 : "THE VELVET GOLD" (Transition Or Texturée)
+           Effet : Approche classique haute-couture. Le texte passe de blanc à ton doré,
+                   mais le sous-titre et la flèche s'illuminent en blanc pur, créant
+                   un double contraste très chic sur l'image.
+           ========================================================================== */
+        .style-velvet .next-title {
+            font-family: var(--font-sans);
+            font-size: clamp(1.4rem, 3vw, 2.2rem);
+            font-weight: 300;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.85);
+            margin: 0;
+            letter-spacing: 2px;
+            transition: color 0.8s ease, letter-spacing 0.8s ease;
+        }
+
+        @media (min-width: 1024px) {
+            .style-velvet:hover .meta-next { color: var(--white); }
+            .style-velvet:hover .indicator-arrow-right { stroke: var(--white); }
+            
+            .style-velvet:hover .next-title {
+                color: var(--text-color); /* Ton Or précieux */
+                letter-spacing: 3px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <main class="container-demo">
+        <h1>Laboratoire d'Interactions Typographiques</h1>
+
+        <!-- STYLE 1 -->
+        <div class="demo-section">
+            <div class="demo-title">Option 1 : "The Chrome Fusion" (Effet mix-blend-mode avec l'image sous-jacente)</div>
+            <a class="next-project-link style-fusion" href="#">
+                <div class="next-content-wrapper">
+                    <div class="meta-container">
+                        <span class="meta-next">Projet Suivant</span>
+                        <svg class="indicator-arrow-right" viewBox="0 0 24 24">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </div>
+                    <h2 class="next-title">Gravure Carafe Riedel</h2>
+                </div>
+                <div class="next-image-container">
+                    <img src="https://picsum.photos/800/600?random=1" alt="Projet Suivant">
+                </div>
+            </a>
+        </div>
+
+        <!-- STYLE 2 -->
+        <div class="demo-section">
+            <div class="demo-title">Option 2 : "The Ink Silhouette" (Texte pochoir transparent laissant filtrer l'image)</div>
+            <a class="next-project-link style-silhouette" href="#">
+                <div class="next-content-wrapper">
+                    <div class="meta-container">
+                        <span class="meta-next">Projet Suivant</span>
+                        <svg class="indicator-arrow-right" viewBox="0 0 24 24">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </div>
+                    <h2 class="next-title">Gravure Carafe Riedel</h2>
+                </div>
+                <div class="next-image-container">
+                    <img src="https://picsum.photos/800/600?random=2" alt="Projet Suivant">
+                </div>
+            </a>
+        </div>
+
+        <!-- STYLE 3 -->
+        <div class="demo-section">
+            <div class="demo-title">Option 3 : "The Velvet Gold" (Contraste bi-colore Or & Blanc Haute-Couture)</div>
+            <a class="next-project-link style-velvet" href="#">
+                <div class="next-content-wrapper">
+                    <div class="meta-container">
+                        <span class="meta-next">Projet Suivant</span>
+                        <svg class="indicator-arrow-right" viewBox="0 0 24 24">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </div>
+                    <h2 class="next-title">Gravure Carafe Riedel</h2>
+                </div>
+                <div class="next-image-container">
+                    <img src="https://picsum.photos/800/600?random=3" alt="Projet Suivant">
+                </div>
+            </a>
+        </div>
+    </main>
+
+</body>
+</html>
